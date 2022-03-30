@@ -1,5 +1,12 @@
 # README
 
+[trelloboard here]https://trello.com/b/ITqIWe5e/real-estate-sp22
+-----------------------
+
+
+
+
+
 This project has devise_token_auth, react_router, etc setup.
 - uses rails v6, ruby 3.0.2
 - more info about the project
