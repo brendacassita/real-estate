@@ -18,6 +18,8 @@ const Navbar = () => {
         <Link className="Nav-link" to="/login">Login</Link>
         <Link className="Nav-link" to="/register">Register</Link>
         
+
+        
       </>
     );
   };
@@ -40,6 +42,7 @@ const Navbar = () => {
       {renderLeft()}
         <Link className="Nav-link" to="/">Home</Link>
         <Link className="Nav-link" to="/available">Available</Link>
+        <Link className="Nav-link" to="/cities">Cities</Link>
 
         {renderLeft()}
 
