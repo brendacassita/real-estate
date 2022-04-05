@@ -5,10 +5,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/properties', to:'properties#index'
-    get '/properties/distinct_cities', to:'properties#distinct_cities'
-    get '/properties/:city', to:'properties#city'
+    get '/properties/cities', to:'properties#cities'
+    get '/properties/:city', to: 'properties#city'
 
     get '/agents', to:'agents#index'
+    get '/agents/:id', to:'agents#show'
 
+    get 'buyers/:id', to: 'buyers#show'
+    get 'buyers1/:id', to: 'buyers#show1'
+
+    get 'city_cost', to:'properties#city_cost'
   end
 end

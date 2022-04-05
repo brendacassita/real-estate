@@ -11,15 +11,9 @@ import FetchUser from './components/shared/FetchUser';
 import ProtectedRoute from './components/shared/ProtectedRoute';
 import Available from './components/pages/Available';
 import Cities from './components/pages/Cities';
+import FindHomes from './components/pages/FindHomes';
 
-//Fetch User: going to see if the user is logged in(valid user?)
-//before we render our routes, it's going to check for user.
-//prevents routes from getting rendered until check is done 
-
-//if fetchUser is in progress of checking App returns null; 
-//it doesn't care whether we have a user or not, it's just checking
-//after done checking it will proceed with render 
-
+// Fetch user: it is going to see if the user is logged in(valid user)
 function App() {
   return (
     <div>
@@ -33,20 +27,19 @@ function App() {
             <Route path='/register' element={<Register />}/>
             <Route path='/' element={<Home />}/>
             <Route path='/available' element={<Available />}/>
-
+            <Route path='/cities' element={<Cities />}/>
+            <Route path='/find_homes' element={<FindHomes />}/>
            
                 {/* protected in routes inside of here you need to logged in*/}
                 {/* else you go to login page*/}
             <Route element={<ProtectedRoute />}>
               <Route path='/home' element={<HomeClass yo={'yoyo'} />}/>
-              <Route path='/cities' element={<Cities />}/>
-
             </Route>  
             <Route path='*' element={<NoMatch />}/>
           </Routes>
         </>
       </FetchUser>
-      {/* <p>Footer for all pages</p> */}
+      <p>Footer for all pages</p>
     </div>
   );
 }

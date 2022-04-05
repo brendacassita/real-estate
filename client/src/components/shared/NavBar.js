@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import Badge from "react-bootstrap/esm/Badge";
-import Button from "react-bootstrap/esm/Button";
 
 const Navbar = () => {
   const auth = useContext(AuthContext);
@@ -11,39 +9,31 @@ const Navbar = () => {
   //    if(!user) => login/register
   const renderRightNav = () => {
     if (auth.user) {
-      return <Button variant="primary" size="sm" onClick={auth.handleLogout}>Logout</Button>;
+      return <button onClick={auth.handleLogout}>Logout</button>;
     }
     return (
       <>
-        <Link className="Nav-link" to="/login">Login</Link>
-        <Link className="Nav-link" to="/register">Register</Link>
-        
-
-        
+        <Link to="/login">login</Link>
+        <Link to="/register">register</Link>
       </>
     );
   };
 
   const renderLeft = () => {
-    //if we have a user, return the links we want to show(if logged in)
     if (auth.user) {
       return (
         <>
-          {/* <Link className="Nav-link" to="/home">Home Protected</Link> */}
-          {/* <Badge onClick={auth.handleLogout }>Logout</Badge> */}
+          {/* <Link to="/home">Home Protected</Link> */}
         </>
       );
     }
   };
-  
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <div>
-      {renderLeft()}
-        <Link className="Nav-link" to="/">Home</Link>
-        <Link className="Nav-link" to="/available">Available</Link>
-        <Link className="Nav-link" to="/cities">Cities</Link>
-
+        <Link to="/available">Available</Link> - 
+        <Link to="/cities">Cities</Link> -
+        <Link to="/find_homes">Find Homes</Link> 
         {renderLeft()}
 
       </div>
@@ -51,5 +41,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;

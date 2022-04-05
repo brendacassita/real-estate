@@ -21,22 +21,26 @@ const Cities = (props) => {
       // this return value becomes the next acumm in function call
       return acumm;
     }, []);
+
+    // axios call (need to setup uniqueCities state)
+
   };
 
   const handleSelect = async(event) => {
     let selectedCity = event.target.value;
     // filter
-    setFilterCities(properties.filter((p) => p.city === selectedCity));
+    // setFilterCities(properties.filter((p) => p.city === selectedCity));
 
-    // // axios call to setFilterCities
-    // let res = await axios.get(`/api/properties/${selectedCity}`)
-    // setFilterCities(res.data)
+    // axios call to setFilterCities
+    let res = await axios.get(`/api/properties/${selectedCity}`)
+    setFilterCities(res.data)
+
   };
 
   const renderSelect = (cities) => {
     return (
-      <Form.Select title="Select" onChange={handleSelect} aria-label="Select City">
-        <option value="" disbaled selected hidden>Please select...</option>
+      <Form.Select label='Select'  onChange={handleSelect} aria-label="Select City">
+        <option value="" disabled selected hidden>Please Choose...</option>
         {cities.map((city) => (
           <option value={city}>{city}</option>
         ))}
@@ -54,7 +58,7 @@ const Cities = (props) => {
 
   const renderFilteredCityProperties = () => {
     if (!filteredCities) {
-      return <p></p>;
+      return <p>No properties, or select a city</p>;
     }
 
     return (
@@ -86,7 +90,7 @@ const Cities = (props) => {
   return (
     <div>
       <h1>Cities</h1>
-      <p>Select a city below:</p>
+      <p>select should be here</p>
       {getSelect()}
       {renderFilteredCityProperties()}
     </div>
